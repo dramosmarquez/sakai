@@ -3370,6 +3370,19 @@ function prepareQuestionDialog() {
 	return true;
 }
 
+function printViewWithParameter(url) {
+    var i = url.indexOf("/site/");
+    if (i < 0)
+    	return url;
+    var j = url.indexOf("/tool/");
+    if (j < 0)
+    	return url;
+    var z = url.indexOf("ShowPage");
+    if (z < 0)
+    	return url.substring(0, i) + url.substring(j) + '?printall=true';
+    else
+        return url.substring(0, i) + url.substring(j) + '&printall=true';
+}
 // Reset the multiple choice answers to prevent problems when submitting a shortanswer
 function resetMultipleChoiceAnswers() {
 	var firstMultipleChoice = $("#copyableMultipleChoiceAnswerDiv");
